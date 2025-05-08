@@ -1,0 +1,47 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Product" %} # {{ product.pk }} 
+{% endblock %}
+
+{% block body %}
+<h1>{% trans "Product" %} <strong>{{ product.name }}</strong></h1>
+<div>
+    <div>{% trans "Description" %}: <em>{{ product.description }}</em></div>
+    <div>{% trans "Price" %}: {{ product.price }}</div>
+    <div>{% trans "Discount" %} {{ product.discount }}</div>
+    <div>{% trans "Archived" %}: {{ product.archived }}</div>
+    {% if product.preview %}
+    <img src="{{ product.preview.url }}" alt="{{ product.preview.name }}">
+    {% endif %}
+    <h3>
+        {% blocktrans count count_images=product.images.all|length trimmed %}
+        {{ count_images }} image to the description:
+        {% plural %}
+        {{ count_images }} images to the description:
+        {% endblocktrans %}
+    </h3>
+    {% for img in product.images.all %}
+    <div>
+        <img src="{{ img.image.url }}" alt="{{ img.image.name }}">
+        <div>{{ img.description }}</div>
+    </div>
+    {% empty %}
+    <div>{% trans "No images upload yet" %}</div>
+    {% endfor %}
+</div>
+{% if user.is_superuser or perms.shop.change_product and product.created_by == user %}
+<div>
+    <br>
+    <a class="best-href" href="{% url 'shop:product_update' pk=product.pk %}">{% trans "Update product" %}</a>
+</div>
+<br>
+<div>
+    <a class="best-href" href="{% url 'shop:product_archive' pk=product.pk %}">{% trans "Archive product" %}</a>
+</div>
+{% endif %}
+<br>
+<div>
+    <a class="best-href" href="{% url 'shop:products' %}">{% trans "Back to products list" %}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,295 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-07 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: mysite19/settings.py:185
+msgid "English"
+msgstr ""
+
+#: mysite19/settings.py:186
+msgid "Russian"
+msgstr ""
+
+#: shop/models.py:28 shop/templates/shop/product-details.html:4
+#: shop/templates/shop/product-details.html:8
+msgid "Product"
+msgstr "Product:"
+
+#: shop/models.py:29
+msgid "Products"
+msgstr "Products:"
+
+#: shop/models.py:100 shop/templates/shop/order_detail.html:5
+#: shop/templates/shop/order_detail.html:9
+#: shop/templates/shop/order_list.html:20
+#: shop/templates/shop/user_orders.html:24
+msgid "Order"
+msgstr "Order"
+
+#: shop/models.py:101
+msgid "Orders"
+msgstr "Orders"
+
+#: shop/templates/shop/groups-list.html:4
+#, fuzzy
+#| msgid "Products list"
+msgid "Groups list"
+msgstr "Groups list"
+
+#: shop/templates/shop/groups-list.html:8
+msgid "Groups"
+msgstr ""
+
+#: shop/templates/shop/groups-list.html:13
+#: shop/templates/shop/order_form.html:14
+#: shop/templates/shop/product_form.html:13
+msgid "Create"
+msgstr "Create"
+
+#: shop/templates/shop/groups-list.html:18
+msgid "No groups yet"
+msgstr "No groups yet"
+
+#: shop/templates/shop/order_confirm_delete.html:4
+msgid "Confirm delete"
+msgstr ""
+
+#: shop/templates/shop/order_confirm_delete.html:8
+msgid "Are you sure you want to delete order"
+msgstr ""
+
+#: shop/templates/shop/order_confirm_delete.html:11
+msgid "Back to order"
+msgstr ""
+
+#: shop/templates/shop/order_confirm_delete.html:18
+msgid "Delete"
+msgstr ""
+
+#: shop/templates/shop/order_detail.html:11
+#: shop/templates/shop/order_list.html:21
+#: shop/templates/shop/user_orders.html:25
+msgid "Order by"
+msgstr "Order by"
+
+#: shop/templates/shop/order_detail.html:12
+msgid "Promo code"
+msgstr ""
+
+#: shop/templates/shop/order_detail.html:13
+msgid "Delivery address"
+msgstr ""
+
+#: shop/templates/shop/order_detail.html:14
+msgid "Created at"
+msgstr "Created at"
+
+#: shop/templates/shop/order_detail.html:16
+msgid "Products in order"
+msgstr "Products in order"
+
+#: shop/templates/shop/order_detail.html:19
+msgid "cost"
+msgstr "cost"
+
+#: shop/templates/shop/order_detail.html:19
+msgid "rub"
+msgstr "rub"
+
+#: shop/templates/shop/order_detail.html:26
+msgid "Back to orders"
+msgstr "Back to orders"
+
+#: shop/templates/shop/order_detail.html:30
+#: shop/templates/shop/order_update_form.html:4
+#: shop/templates/shop/order_update_form.html:8
+msgid "Update order"
+msgstr "Update order"
+
+#: shop/templates/shop/order_detail.html:34
+msgid "Delete order"
+msgstr "Delete order"
+
+#: shop/templates/shop/order_form.html:4
+msgid "Create order"
+msgstr "Create a new order"
+
+#: shop/templates/shop/order_form.html:8
+msgid "Create a new order"
+msgstr "Create a new order"
+
+#: shop/templates/shop/order_form.html:21
+msgid "Back to orders list"
+msgstr "Back to orders list"
+
+#: shop/templates/shop/order_list.html:5
+msgid "Orders list"
+msgstr "Orders list"
+
+#: shop/templates/shop/order_list.html:20
+#: shop/templates/shop/user_orders.html:24
+msgid "details"
+msgstr "details"
+
+#: shop/templates/shop/order_list.html:23
+#: shop/templates/shop/user_orders.html:27
+#, python-format
+msgid ""
+"\n"
+"            %(products_count)s Product in order:\n"
+"            "
+msgid_plural ""
+"\n"
+"            %(products_count)s Products in order:\n"
+"            "
+msgstr[0] ""
+"\n"
+"            %(products_count)s Product in order:\n"
+"            "
+msgstr[1] ""
+"\n"
+"            %(products_count)s Products in order:\n"
+"            "
+
+#: shop/templates/shop/order_list.html:31
+#: shop/templates/shop/user_orders.html:35
+#, python-format
+msgid ""
+" At the cost %(price)s rub.\n"
+"                    "
+msgstr ""
+" At the cost %(price)s rub.\n"
+"                    "
+
+#: shop/templates/shop/order_list.html:43
+msgid "No orders yet"
+msgstr "No orders yet"
+
+#: shop/templates/shop/order_list.html:50
+#: shop/templates/shop/user_orders.html:56
+msgid "Create new order"
+msgstr "Create a new order"
+
+#: shop/templates/shop/order_update_form.html:19
+#: shop/templates/shop/product_update_form.html:19
+msgid "Back to product"
+msgstr "Back to products list"
+
+#: shop/templates/shop/product-details.html:10
+msgid "Description"
+msgstr "Description"
+
+#: shop/templates/shop/product-details.html:11
+msgid "Price"
+msgstr "Price:"
+
+#: shop/templates/shop/product-details.html:12
+msgid "Discount"
+msgstr "Discount:"
+
+#: shop/templates/shop/product-details.html:13
+msgid "Archived"
+msgstr "Archived"
+
+#: shop/templates/shop/product-details.html:18
+#, python-format
+msgid "%(count_images)s image to the description:"
+msgid_plural "%(count_images)s images to the description:"
+msgstr[0] "%(count_images)s image to the description:"
+msgstr[1] "%(count_images)s images to the description:"
+
+#: shop/templates/shop/product-details.html:30
+msgid "No images upload yet"
+msgstr "No images upload yet"
+
+#: shop/templates/shop/product-details.html:36
+#: shop/templates/shop/product_update_form.html:4
+#: shop/templates/shop/product_update_form.html:8
+msgid "Update product"
+msgstr "Update product"
+
+#: shop/templates/shop/product-details.html:40
+msgid "Archive product"
+msgstr "Archive product"
+
+#: shop/templates/shop/product-details.html:45
+#: shop/templates/shop/product_form.html:19
+msgid "Back to products list"
+msgstr "Back to products list"
+
+#: shop/templates/shop/product_form.html:4
+#: shop/templates/shop/product_form.html:8
+msgid "Create product"
+msgstr "Create a new product"
+
+#: shop/templates/shop/products-list.html:5
+msgid "Products list"
+msgstr "Products list"
+
+#: shop/templates/shop/products-list.html:17
+#, python-format
+msgid "There is only one product."
+msgid_plural "There are %(products_count)s products."
+msgstr[0] "There is only one product."
+msgstr[1] "There are %(products_count)s products."
+
+#: shop/templates/shop/products-list.html:27
+#, python-format
+msgid "Product: %(name)s"
+msgstr "Products: %(name)s"
+
+#: shop/templates/shop/products-list.html:29
+msgid "Price:"
+msgstr "Price:"
+
+#: shop/templates/shop/products-list.html:30
+msgid "no discount"
+msgstr "no discount"
+
+#: shop/templates/shop/products-list.html:31
+msgid "Discount:"
+msgstr "Discount:"
+
+#: shop/templates/shop/products-list.html:39
+msgid "No products yet"
+msgstr "No products yet"
+
+#: shop/templates/shop/products-list.html:45
+msgid "Create a new product"
+msgstr "Create a new product"
+
+#: shop/templates/shop/shop-index.html:9
+msgid "Shop's INFO"
+msgstr ""
+
+#: shop/templates/shop/shop-index.html:11
+msgid "HREFS"
+msgstr ""
+
+#: shop/templates/shop/shop-index.html:19
+#: shop/templates/shop/shop-index.html:24
+msgid "Information in development"
+msgstr "Information in development"
+
+#: shop/templates/shop/user_orders.html:48
+
+msgid "has no orders yet"
+msgstr "No orders yet"
+
+

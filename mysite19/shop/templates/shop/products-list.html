@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Products list" %}
+{% endblock %}
+
+{% block body %}
+{% if products|length == 1 %}
+  <h1>{{ product_verbose_name }}</h1>
+{% else %}
+  <h1>{{ products_verbose_name }}</h1>
+{% endif %}
+{% if products|length > 0 %}
+
+<div>
+    {% blocktrans count products_count=products|length trimmed %}
+    There is only one product.
+    {% plural %}
+    There are {{ products_count }} products.
+    {% endblocktrans %}
+</div>
+<div>
+    {% for product in products %}
+    <div>
+        <h5><a class="best-href" href="{% url 'shop:product_details' pk=product.pk %}">
+            {% blocktrans with name=product.name|upper %}Product: {{ name }}{% endblocktrans %}</a></h5>
+
+        <span>{% trans "Price:" %} {{ product.price }} |</span>
+        {% trans "no discount" as no_discount %}
+        <span>{% trans "Discount:" %} {% firstof product.discount no_discount %}</span>
+        {% if product.preview %}
+        <img src="{{ product.preview.url }}" alt="{{ product.preview.name }}">
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h3>{% trans "No products yet" %}</h3>
+{% endif %}
+{% if perms.shop.add_product %}
+<div>
+    <p>
+        <a class="best-href" href="{% url 'shop:create_product' %}">
+            {% trans "Create a new product" %}
+        </a>
+    </p>
+</div>
+
+{% endif %}
+
+{% endblock %}

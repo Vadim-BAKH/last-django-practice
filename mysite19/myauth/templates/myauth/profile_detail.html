@@ -1,0 +1,30 @@
+{% extends "myauth/base.html" %}
+{% block title %}
+Profile {{ profile.user.username }}
+{% endblock %}
+{% block body %}
+{% if profile.avatar %}
+<img class="avatar" src="{{ profile.avatar.url }}" alt="Аватар {{ profile.user.username }}">
+{% else %}
+<p>Аватар отсутствует</p>
+{% endif %}
+<div>
+    {% if request.user.is_staff or request.user.pk == profile.user.pk %}
+    <div>
+        <a class="best-href" href="{% url 'myauth:staff-avatar-update' pk=profile.pk %}">
+            Изменить аватар
+        </a>
+    </div>
+    {% endif %}
+</div>
+<div>
+    <h2>Профиль пользователя: {{ profile.user.username }}</h2>
+    <p>Имя: {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+    <p>Должность: {{ profile.position }}</p>
+    <p>Email: {{ profile.user.email }}</p>
+</div>  
+<div>
+    <br>
+    <a class="best-href" href="{% url 'myauth:profiles' %}">Back to profiles</a>
+</div> 
+{% endblock %}

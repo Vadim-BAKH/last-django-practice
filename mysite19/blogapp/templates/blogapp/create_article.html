@@ -1,0 +1,25 @@
+{% extends "blogapp/base.html" %}
+{% block title %}Create Article{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Create new article</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button">
+                Create
+            </button>
+        </form>
+    </div>
+</div>
+<div>
+    <p>
+        <a class="best-href" href="{% url 'blogapp:articles' %}">
+            Back to articles list
+        </a>
+    </p>
+</div>
+
+{% endblock %}

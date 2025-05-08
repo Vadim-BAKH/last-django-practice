@@ -1,0 +1,34 @@
+{% extends "blogapp/base.html" %}
+{% block title %}Author View{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Author's blog</h2>
+   
+    <div>
+        <p>
+            <h4>{{ author.name }}</h4>
+        </p>
+        <p>
+            <h5>My biography.</h5>
+            
+            {{ author.bio }}
+        </p>
+        <p>
+            <h5>My articles:</h5>
+            <ul>
+                {% for article in author.articles.all %}
+                    <li>
+                        <a class="best-href" href="{% url 'blogapp:article_view' pk=article.pk %}">{{ article.title }}</a>
+                    </li>
+                {% empty %}
+                    <li>No articles yet.</li>
+                {% endfor %}
+            </ul>
+        </p>
+    </div>
+
+    
+</div>
+
+{% endblock %}

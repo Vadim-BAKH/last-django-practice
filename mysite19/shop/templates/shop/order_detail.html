@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Order" %} # {{ object.pk }} details
+{% endblock %}
+
+{% block body %}
+<h1>{% trans "Order" %} # {{ object.pk }}</h1>
+<div>
+    <h5>{% trans "Order by" %}: {% firstof object.user.first_name object.user.username %}</h5>
+    <p>{% trans "Promo code" %}: <code>{{ object.promo_code }}</code></p>
+    <p>{% trans "Delivery address" %}: {{ object.delivery_address }}</p>
+    <p>{% trans "Created at" %}: {{ object.created_at}}</p>
+    <div>
+        {% trans "Products in order" %}:
+        <ul>
+            {% for product in object.products.all %}
+            <li>{{ product.name }} {% trans "cost" %} {{ product.price }} {% trans "rub" %}.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br>
+<div>
+    <a class="best-href" href="{% url 'shop:orders' %}">{% trans "Back to orders" %}</a>
+</div>
+<br>
+<div>
+    <a class="best-href" href="{% url 'shop:order_update' pk=object.pk %}">{% trans "Update order" %}</a>
+</div>
+<br>
+<div>
+    <a class="best-href" href="{% url 'shop:order_delete' pk=object.pk %}">{% trans "Delete order" %}</a>
+</div>
+{% endblock %}

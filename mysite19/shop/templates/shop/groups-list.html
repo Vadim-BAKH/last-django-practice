@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+{% block title %}
+{% trans "Groups list" %}
+{% endblock %}
+
+{% block body %}
+<h1>{% trans "Groups" %}:</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">{% trans "Create" %}</button>
+    </form>
+</div>
+<div>
+    {% if not groups %}
+    <h3>{% trans "No groups yet" %}</h3>
+    {% else %}
+    <ul>
+        {% for group in groups %}
+        <li>
+            <div>{{ group.name }}</div>
+            <ul>
+                {% for permission in group.permissions.all %}
+                <li>
+                    {{ permission.name }}
+                    (<code>{{ permission.codename }}</code>)
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+{% endblock %}

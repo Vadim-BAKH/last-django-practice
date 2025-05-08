@@ -1,0 +1,66 @@
+{% extends 'shop/base.html' %}
+{% load cache %}
+{% load i18n %}
+
+{% block title %}
+{{ orders_verbose_name }} {{ owner.username }}
+{% endblock %}
+
+{% block body %}
+{% if object_list|length == 1 %}
+<h2>
+    {{ order_verbose_name}} {{ owner.get_full_name }} ({{ owner.username }})
+</h2>
+{% else %}
+<h2>
+    {{ orders_verbose_name}} {{ owner.get_full_name }} ({{ owner.username }})
+</h2>
+{% endif %}
+
+{% cache 300 Order_blok owner.id %}
+{% if object_list|length > 0 %}
+<div>
+    {% for order in object_list %}
+    <br>
+    <div>
+        <p><a class="best-href" href="{% url 'shop:order_details' pk=order.pk %}">
+            {% trans "Order" %} # {{ order.pk }} ({% trans "details" %})</a></p>
+        <h5>{% trans "Order by" %}: {% firstof order.user.first_name order.user.username %}</h5>
+        <div>
+            {% blocktrans count products_count=order.products.all|length %}
+            {{ products_count }} Product in order:
+            {% plural %}
+            {{ products_count }} Products in order:
+            {% endblocktrans %}
+            <ul>
+                {% for product in order.products.all %}
+                <li>{{ product.name|truncatewords:2 }} 
+                    {% blocktrans with price=product.price %} At the cost {{ price }} rub.
+                    {% endblocktrans %}
+                </li>
+                {% endfor %}
+            </ul>
+            
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h5>
+    {% trans "has no orders yet" %}.
+</h5>
+{% endif %}
+{% endcache %}
+
+{% if perms.shop.add_order %}
+<div>
+    <p>
+        <a class="best-href" href="{% url 'shop:create_order' %}">
+            {% trans "Create new order" %}
+        </a>
+    </p>
+</div>
+{% endif %}
+
+{% endblock %}

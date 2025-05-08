@@ -1,0 +1,26 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+Profiles list
+{% endblock %}
+
+{% block body %}
+<h1>PROFILES:</h1>
+{% if profiles %}
+<ul>
+    {% for profile in profiles %}
+      <li>
+        <a class="best-href" href="{% url 'myauth:profile-detail' pk=profile.pk %}">
+          {{ profile.user.username }} 
+        </a>
+        <span>position: {{ profile.position }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  
+
+{% else %}
+<h3>No profiles yet</h3>
+{% endif %}
+
+{% endblock %}

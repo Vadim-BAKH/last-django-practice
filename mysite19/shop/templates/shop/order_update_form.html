@@ -1,0 +1,24 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Update order" %}
+{% endblock %}
+
+{% block body %}
+<h1>{% trans "Update order" %} # {{ object.pk }}</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">Update</button>
+    </form>
+</div>
+<div>
+    <p>
+        <a class="best-href" href="{% url 'shop:order_details' pk=object.pk %}">
+            {% trans "Back to product" %} # {{ object.pk }}
+        </a>
+    </p>
+</div>
+
+{% endblock %} b

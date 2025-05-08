@@ -1,0 +1,39 @@
+{% extends "blogapp/base.html" %}
+{% block title %}{{ article.title }}{% endblock %}
+
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Article View</h2>
+   
+    <div class="article">
+        <h5>{{ article.title }}</h5>
+        <p class="article-content">
+            {{ article.content }}
+        </p>
+        <p>Published: {{ article.pub_date|date:"d.m.Y H:i" }}</p>
+        <p>Author: {{ article.author }}</p>
+        <p>Category: {{ article.category }}</p>
+        
+        <p>Tags:
+            {% for tag in article.tags.all %}
+            <span class="badge bg-secondary">{{ tag.name }}</span>
+            {% empty %}
+            <span class="badge bg-light text-dark">No tags</span>
+            {% endfor %}
+        </p>
+        
+    </div>
+    <p>
+        <a class="best-href" href="{% url 'blogapp:articles' %}">
+            Back to articles list
+        </a>
+        <a class="best-href" href="{% url 'blogapp:author_view' pk=article.author.pk %}">
+            Back to author's blog
+        </a>
+        
+    </p>
+    
+</div>
+
+{% endblock %}

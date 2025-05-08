@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Confirm delete" %} # {{ object.pk }}
+{% endblock %}
+
+{% block body %}
+<h2 class="warning"> {% trans "Are you sure you want to delete order" %} # {{ object.pk }}?</h2>
+<div>
+    <br>
+    <a class="best-href" href="{% url 'shop:order_details' pk=object.pk %}">{% trans "Back to order" %}</a>
+</div>
+<br>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">{% trans "Delete" %}</button>
+    </form>
+</div>
+
+{% endblock %} 

@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% load cache %}
+{% load i18n %}
+
+{% block title %}
+Shop index
+{% endblock %}
+{% block body %}
+<h1>👌{% trans "Shop's INFO" %}👌</h1>
+
+<h3>{% trans "HREFS" %}:</h3>
+<div>
+{% if hrefs %}
+{% cache 100 hrefs_list hrefs|length %}
+<div>
+    {% for href in hrefs %}
+        <a class="best-href" href="{{ href }}">{{ href }}</a><br>
+    {% empty %}
+        <p>{% trans "Information in development" %}🙅‍♂️</p>
+    {% endfor %}
+</div>
+{% endcache %}
+{% else %}
+<p>{% trans "Information in development" %}🙅‍♂️</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

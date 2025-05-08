@@ -1,0 +1,18 @@
+{% extends "blogapp/base.html" %}
+{% block title %}Create author{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Create author</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button">
+                Create
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

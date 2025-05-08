@@ -1,0 +1,301 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-07 06:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: mysite19/settings.py:185
+msgid "English"
+msgstr ""
+
+#: mysite19/settings.py:186
+msgid "Russian"
+msgstr "Русский"
+
+#: shop/models.py:28 shop/templates/shop/product-details.html:4
+#: shop/templates/shop/product-details.html:8
+msgid "Product"
+msgstr "Товар:"
+
+#: shop/models.py:29
+msgid "Products"
+msgstr "Товары:"
+
+#: shop/models.py:100 shop/templates/shop/order_detail.html:5
+#: shop/templates/shop/order_detail.html:9
+#: shop/templates/shop/order_list.html:20
+#: shop/templates/shop/user_orders.html:24
+msgid "Order"
+msgstr "Заказ"
+
+#: shop/models.py:101
+msgid "Orders"
+msgstr "Заказы"
+
+#: shop/templates/shop/groups-list.html:4
+msgid "Groups list"
+msgstr "Список групп"
+
+#: shop/templates/shop/groups-list.html:8
+msgid "Groups"
+msgstr "Группы"
+
+#: shop/templates/shop/groups-list.html:13
+#: shop/templates/shop/order_form.html:14
+#: shop/templates/shop/product_form.html:13
+msgid "Create"
+msgstr "Создать"
+
+#: shop/templates/shop/groups-list.html:18
+msgid "No groups yet"
+msgstr "Пока групп нет"
+
+#: shop/templates/shop/order_confirm_delete.html:4
+msgid "Confirm delete"
+msgstr "Удаление"
+
+#: shop/templates/shop/order_confirm_delete.html:8
+msgid "Are you sure you want to delete order"
+msgstr "Вы, уверены, что хотите удалить заказ"
+
+#: shop/templates/shop/order_confirm_delete.html:11
+msgid "Back to order"
+msgstr "Вернуться к заказу"
+
+#: shop/templates/shop/order_confirm_delete.html:18
+msgid "Delete"
+msgstr "Удалить"
+
+#: shop/templates/shop/order_detail.html:11
+#: shop/templates/shop/order_list.html:21
+#: shop/templates/shop/user_orders.html:25
+msgid "Order by"
+msgstr "Заказано"
+
+#: shop/templates/shop/order_detail.html:12
+msgid "Promo code"
+msgstr "Промо Код"
+
+#: shop/templates/shop/order_detail.html:13
+msgid "Delivery address"
+msgstr "Адрес доставки"
+
+#: shop/templates/shop/order_detail.html:14
+msgid "Created at"
+msgstr "Создан"
+
+#: shop/templates/shop/order_detail.html:16
+msgid "Products in order"
+msgstr "Товары в заказе"
+
+#: shop/templates/shop/order_detail.html:19
+msgid "cost"
+msgstr "по цене"
+
+#: shop/templates/shop/order_detail.html:19
+msgid "rub"
+msgstr "руб"
+
+#: shop/templates/shop/order_detail.html:26
+msgid "Back to orders"
+msgstr "Вернуться к списку заказов"
+
+#: shop/templates/shop/order_detail.html:30
+#: shop/templates/shop/order_update_form.html:4
+#: shop/templates/shop/order_update_form.html:8
+msgid "Update order"
+msgstr "Обновить заказ"
+
+#: shop/templates/shop/order_detail.html:34
+msgid "Delete order"
+msgstr "Удалить заказ"
+
+#: shop/templates/shop/order_form.html:4
+msgid "Create order"
+msgstr "Создать заказ"
+
+#: shop/templates/shop/order_form.html:8
+msgid "Create a new order"
+msgstr "Добавить новый заказ"
+
+#: shop/templates/shop/order_form.html:21
+msgid "Back to orders list"
+msgstr "Вернуться к списку заказов"
+
+#: shop/templates/shop/order_list.html:5
+msgid "Orders list"
+msgstr "Список заказов"
+
+#: shop/templates/shop/order_list.html:20
+#: shop/templates/shop/user_orders.html:24
+msgid "details"
+msgstr "детали"
+
+#: shop/templates/shop/order_list.html:23
+#: shop/templates/shop/user_orders.html:27
+#, python-format
+msgid ""
+"\n"
+"            %(products_count)s Product in order:\n"
+"            "
+msgid_plural ""
+"\n"
+"            %(products_count)s Products in order:\n"
+"            "
+msgstr[0] ""
+"\n"
+"            %(products_count)s Товар в заказе:\n"
+"            "
+msgstr[1] ""
+"\n"
+"            %(products_count)s Товара в заказе:\n"
+"            "
+msgstr[2] ""
+"\n"
+"            %(products_count)s Товаров в заказе:\n"
+"            "
+
+#: shop/templates/shop/order_list.html:31
+#: shop/templates/shop/user_orders.html:35
+#, python-format
+msgid ""
+" At the cost %(price)s rub.\n"
+"                    "
+msgstr ""
+" По цене %(price)s руб.\n"
+"                    "
+
+#: shop/templates/shop/order_list.html:43
+msgid "No orders yet"
+msgstr "Пока заказов нет"
+
+#: shop/templates/shop/order_list.html:50
+#: shop/templates/shop/user_orders.html:56
+msgid "Create new order"
+msgstr "Добавить новый заказ"
+
+#: shop/templates/shop/order_update_form.html:19
+#: shop/templates/shop/product_update_form.html:19
+msgid "Back to product"
+msgstr "Вернуться к списку товаров"
+
+#: shop/templates/shop/product-details.html:10
+msgid "Description"
+msgstr "Описание"
+
+#: shop/templates/shop/product-details.html:11
+msgid "Price"
+msgstr "Цена"
+
+#: shop/templates/shop/product-details.html:12
+msgid "Discount"
+msgstr "Скидка:"
+
+#: shop/templates/shop/product-details.html:13
+msgid "Archived"
+msgstr "В архиве"
+
+#: shop/templates/shop/product-details.html:18
+#, python-format
+msgid "%(count_images)s image to the description:"
+msgid_plural "%(count_images)s images to the description:"
+msgstr[0] "%(count_images)s картинка к описанию:"
+msgstr[1] "%(count_images)s картинки к описанию:"
+msgstr[2] "%(count_images)s картинок к описанию:"
+
+#: shop/templates/shop/product-details.html:30
+msgid "No images upload yet"
+msgstr "Нет картинок к описанию"
+
+#: shop/templates/shop/product-details.html:36
+#: shop/templates/shop/product_update_form.html:4
+#: shop/templates/shop/product_update_form.html:8
+msgid "Update product"
+msgstr "Обновить товар"
+
+#: shop/templates/shop/product-details.html:40
+msgid "Archive product"
+msgstr "Архивировать товар"
+
+#: shop/templates/shop/product-details.html:45
+#: shop/templates/shop/product_form.html:19
+msgid "Back to products list"
+msgstr "Вернуться к списку товаров"
+
+#: shop/templates/shop/product_form.html:4
+#: shop/templates/shop/product_form.html:8
+msgid "Create product"
+msgstr "Добавить новый товар"
+
+#: shop/templates/shop/products-list.html:5
+msgid "Products list"
+msgstr "Список товаров"
+
+#: shop/templates/shop/products-list.html:17
+
+msgid "There is only one product."
+msgid_plural "There are %(products_count)s products."
+msgstr[0] "Доступен только один товар."
+msgstr[1] "Доступно %(products_count)s товара."
+msgstr[2] "Доступно %(products_count)s товаров."
+
+#: shop/templates/shop/products-list.html:27
+#, python-format
+msgid "Product: %(name)s"
+msgstr "Товар: %(name)s"
+
+#: shop/templates/shop/products-list.html:29
+msgid "Price:"
+msgstr "Цена"
+
+#: shop/templates/shop/products-list.html:30
+msgid "no discount"
+msgstr "без скидки"
+
+#: shop/templates/shop/products-list.html:31
+msgid "Discount:"
+msgstr "Скидка:"
+
+#: shop/templates/shop/products-list.html:39
+msgid "No products yet"
+msgstr "Пока товаров нет"
+
+#: shop/templates/shop/products-list.html:45
+msgid "Create a new product"
+msgstr "Добавить новый товар"
+
+#: shop/templates/shop/shop-index.html:9
+msgid "Shop's INFO"
+msgstr "ИНФОРМАЦИЯ О МАГАЗИНЕ"
+
+#: shop/templates/shop/shop-index.html:11
+msgid "HREFS"
+msgstr "ССЫЛКИ"
+
+#: shop/templates/shop/shop-index.html:19
+#: shop/templates/shop/shop-index.html:24
+msgid "Information in development"
+msgstr "Информация в разработке"
+
+#: shop/templates/shop/user_orders.html:48
+
+msgid "has no orders yet"
+msgstr "Пока заказов нет"
+
+

@@ -1,0 +1,37 @@
+{% extends "myauth/base.html" %}
+{% load cache %}
+
+{% block title %}
+About me 
+{% endblock %}
+
+{% block body %}
+<h2>User info</h2>
+<div>
+    Products available {% now "u" %}
+</div>
+{% if user.is_authenticated %}
+{% cache 300 userinfo user.username %}
+<h3>Avatar:</h3>
+{% if user.profile.avatar %}
+<img class="avatar" src="{{ user.profile.avatar.url }}" alt="Avatar">
+{% else %}
+<p>Аватарка в профиле отсутствует.</p>
+{% endif %}
+
+<h3>Details:</h3>
+<p>Username: {{ user.username }}</p>
+<p>First name: {{ user.first_name }}</p>
+<p>Last name: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Position: {{ user.profile.position }}</p>
+{% endcache %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Изменить аватар</button>
+</form>
+{% else %}
+<h3>User is anonymous</h3>
+{% endif %}
+{% endblock %}

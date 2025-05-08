@@ -1,0 +1,32 @@
+[project]
+name = "pythonanywhere-debug"
+version = "0.1.0"
+description = "Last django practice"
+authors = [
+    {name = "Vadim Bakhtiarov",email = "vadima64@mail.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "pytz (==2025.2)",
+    "asgiref (==3.8.1)",
+    "django (==5.1.7)",
+    "sqlparse (==0.5.3)",
+    "pillow (==11.2.1)",
+    "argon2-cffi (==23.1.0)",
+    "djangorestframework (==3.16.0)",
+    "django-filter (==25.1)",
+    "docutils (==0.21.2)",
+    "drf-spectacular (==0.28.0)",
+    "django-select2 (==8.4.0)",
+    "loguru (==0.7.3)",
+    "sentry-sdk (>=2.27.0,<3.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "django-debug-toolbar (>=5.2.0,<6.0.0)",
+    "django-redis (>=5.4.0,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

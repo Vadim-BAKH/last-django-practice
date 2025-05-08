@@ -1,0 +1,27 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Create order" %}
+{% endblock %}
+
+{% block body %}
+<h1>{% trans "Create a new order" %}</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">
+            {% trans "Create" %}
+        </button>
+    </form>
+</div>
+<div>
+    <p>
+        <a class="best-href" href="{% url 'shop:orders' %}">
+            {% trans "Back to orders list" %}
+        </a>
+    </p>
+
+</div>
+
+{% endblock %}
