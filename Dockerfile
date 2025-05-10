@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y libpq-dev gcc curl
 RUN pip install --upgrade pip
 RUN curl -sSL https://install.python-poetry.org | python3
 

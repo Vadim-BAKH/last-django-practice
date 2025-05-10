@@ -74,7 +74,8 @@ target/
 .env
 .venv/
 venv/
-.vad/
+.shop/
+docs/
 
 # PyCharm
 .idea

@@ -16,33 +16,38 @@ from pathlib import Path
 import sentry_sdk
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from dotenv import load_dotenv
 from loguru import logger
 
-load_dotenv()
+
 SENTRY_DSN = os.getenv("SENTRY_DSN")
-sentry_sdk.init(
-    dsn=SENTRY_DSN,
-    send_default_pii=True,
-)
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        send_default_pii=True,
+    )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+DATABASE_DIR = BASE_DIR / "database"
+DATABASE_DIR.mkdir(exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-%(#_qtl5kxq0z&3ot=&gelkb@z^)*+%my&(9sxht(zn*cfq4r*"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    raise Exception("DJANGO_SECRET_KEY environment variable not set!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "0") == "1"
 
+allowed_hosts_env = os.getenv("DJANGO_ALLOWED_HOSTS", "")
 ALLOWED_HOSTS = [
-    "0.0.0.0",
-    "127.0.0.1",
-    "localhost",
+                    "0.0.0.0", "127.0.0.1", "localhost"
+                ] + [
+    h for h in allowed_hosts_env.split(",") if h
 ]
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -63,7 +68,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "debug_toolbar",
+
     "rest_framework",
     "drf_spectacular",
     "django_filters",
@@ -78,6 +83,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # "django.middleware.cache.UpdateCacheMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -87,9 +93,18 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.admindocs.middleware.XViewMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
     # "django.middleware.cache.FetchFromCacheMiddleware",
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+if DEBUG:
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.insert(
+        1,
+        "debug_toolbar.middleware.DebugToolbarMiddleware"
+    )
 
 ROOT_URLCONF = "mysite19.urls"
 
@@ -116,8 +131,12 @@ WSGI_APPLICATION = "mysite19.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB", "postgres"),
+        "USER": os.getenv("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", ""),
+        "HOST": os.getenv("POSTGRES_HOST", "db"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
     }
 }
 
@@ -136,10 +155,11 @@ DATABASES = {
 #
 # CACHE_MIDDLEWARE_SECONDS = 300
 
+redis_url = os.getenv("REDIS_URL", "redis://127.0.0.1:6379/1")
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # адрес Redis и номер базы
+        'LOCATION': redis_url,
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         },
@@ -198,21 +218,23 @@ LOGIN_URL = reverse_lazy("myauth:login")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "uploads"
 
-LOGFILE_PATH = BASE_DIR / "logs_dir" / "log.log"
-LOGFILE_PATH.parent.mkdir(parents=True, exist_ok=True)
+# LOGFILE_PATH = BASE_DIR / "logs_dir" / "log.log"
+# LOGFILE_PATH.parent.mkdir(parents=True, exist_ok=True)
+LOGLEVEL = os.getenv("LOGLEVEL", "INFO").upper()
+logger.remove()
 logger.add(
     sys.stdout,
     format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name} | {message}",
-    level="INFO",
+    level=LOGLEVEL,
 )
-logger.add(
-    str(LOGFILE_PATH),
-    rotation="5 MB",     # ротация по размеру 3 мегабайта
-    retention=3,         # хранить 3 файла (удалять старые)
-    compression="zip",   # архивировать старые логи
-    format="{time:YYYY-MM-DD HH:mm:ss} | [{level}] | {name} | {message}",
-    level="DEBUG",
-)
+# logger.add(
+#     str(LOGFILE_PATH),
+#     rotation="5 MB",     # ротация по размеру 3 мегабайта
+#     retention=3,         # хранить 3 файла (удалять старые)
+#     compression="zip",   # архивировать старые логи
+#     format="{time:YYYY-MM-DD HH:mm:ss} | [{level}] | {name} | {message}",
+#     level="DEBUG",
+# )
 
 # LOGFILE_NAME = BASE_DIR / "logs_dir/log.log"
 # LOGFILE_SIZE = 3 * 1024 * 1024
@@ -255,7 +277,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITTLE": "My Site Project API",
+    "TITLE": "My Site Project API",
     "DESCRIPTION": "Site shop and custom auth",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
@@ -272,3 +294,14 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
+
+# Безопасность для продакшн
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
