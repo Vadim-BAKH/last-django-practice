@@ -7,7 +7,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -22,7 +21,8 @@ services:
   app:
     container_name: app
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: Dockerfile
     command: >
       sh -c "python manage.py migrate &&
              python manage.py collectstatic --noinput &&
@@ -37,7 +37,6 @@ services:
       - .env
     volumes:
       - ./staticfiles:/app/staticfiles
-
     logging:
       driver: loki
       options:
