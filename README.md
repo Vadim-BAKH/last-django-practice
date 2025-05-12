@@ -26,7 +26,7 @@
 
 ![image](https://github.com/user-attachments/assets/67194519-99a3-448e-a9ff-3dddb7507a1c)
 
-Пароль, который запрошен, это мой внутренний - он для все ключей и я не стал его исключать,
+Пароль, который запрошен, это мой внутренний - он для всех ключей и я не стал его исключать,
 а вот пароль на сервер не запрашивается, так как сохранил на сервере публичный ключ
 ![image](https://github.com/user-attachments/assets/2759cd36-ad8d-4848-95fc-a8686e56e3f4)
 
@@ -163,13 +163,13 @@ POSTGRES_PORT=5432
 ![image](https://github.com/user-attachments/assets/778310bc-4e0d-41de-96d4-37d69fa4c0ac)
 ![image](https://github.com/user-attachments/assets/190906bd-fa75-4bdb-bb93-8a6fc5f3a31b)
 
-**Миграции** у меня прписаны в docker-compose.yaml.
+**Миграции** у меня прописаны в docker-compose.yaml.
 
 Дальше, все штатно. Создаю Суперпользователя и можно работать.
 
 **Что не стал уже делать:**
 
-Не стал заморачиватся с **python manage.py makemessages -l ru**/**python manage.py compilemessages**.
+Не стал заморачиваться с **python manage.py makemessages -l ru**/**python manage.py compilemessages**.
 Поэтому **локализаций-интернализаций** нет, но **задача то - в деплое**...
 
 Можно посмотреть браузер.
